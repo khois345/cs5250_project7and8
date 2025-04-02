@@ -40,6 +40,18 @@ public class Parser {
                 return CommandType.C_PUSH;
             case "pop":
                 return CommandType.C_POP;
+            case "label":
+                return CommandType.C_LABEL;
+            case "goto":
+                return CommandType.C_GOTO;
+            case "if-goto":
+                return CommandType.C_IF;
+            case "function":
+                return CommandType.C_FUNCTION;
+            case "call":
+                return CommandType.C_CALL;
+            case "return":
+                return CommandType.C_RETURN;
             default:
                 return CommandType.C_ARITHMETIC;
         }

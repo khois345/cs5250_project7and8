@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>SimpleAdd.vm</name>
-			<type>1</type>
-			<location>C:/Users/Khois/OneDrive/Desktop/Github_local/cs5250-project7and8/cs5250_project7_8/src/cs5250_project7_8/StackArithmetic/SimpleAdd/SimpleAdd.vm</location>
-		</link>
-	</linkedResources>
 </projectDescription>

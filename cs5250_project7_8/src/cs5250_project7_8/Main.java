@@ -37,10 +37,17 @@ public class Main {
                 code = new Code(getOutputFilePath(inputFile));
 
                 if (inputFile.isDirectory()) {
-                    for (File vmFile : inputFile.listFiles((dir, name) -> name.endsWith(".vm"))) {
-                        processFile(vmFile);
-                    }
+                	 if (containsSysVM(inputFile)) {
+                         code.writeBootstrap();
+                     }
+                     // Then translate every .vm in that folder
+                     for (File vmFile : inputFile.listFiles((dir, name) -> name.endsWith(".vm"))) {
+                         processFile(vmFile);
+                     }
                 } else {
+                    if (inputFile.getName().equals("Sys.vm")) {
+                        code.writeBootstrap();
+                    }
                     processFile(inputFile);
                 }
 
@@ -52,6 +59,19 @@ public class Main {
                 e.printStackTrace();
             }
         }
+    }
+    
+    // Check if the folder contains Sys.vm file
+    private static boolean containsSysVM(File directory) {
+        File[] vmFiles = directory.listFiles((dir, name) -> name.endsWith(".vm"));
+        if (vmFiles != null) {
+            for (File f : vmFiles) {
+                if (f.getName().equals("Sys.vm")) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private static void processFile(File file) throws FileNotFoundException {
